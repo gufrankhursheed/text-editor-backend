@@ -11,17 +11,19 @@ const googleCallback = (req, res, next) => {
         const { token } = user;
 
         res.cookie("token", token, { httpOnly: true, secure: false });
-        res.redirect(`${process.env.FRONTEND_URL}/?token=${token}`);
+        res.redirect(`${process.env.FRONTEND_URL}/dashboard?token=${token}`);
     })(req, res, next);
 };
 
-const googleLogout = (req, res) => {
-    req.logout(() => {
+const googleLogout = (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
         res.clearCookie("token");
         res.json({ message: "Logged out successfully" });
-      });
-}
-
+    });
+};
 export {
     googleLogin,
     googleCallback,
