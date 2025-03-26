@@ -11,7 +11,7 @@ const googleCallback = (req, res, next) => {
         const { token } = user;
 
         res.cookie("token", token, { httpOnly: true, secure: false });
-        res.redirect(`${process.env.FRONTEND_URL}/dashboard?token=${token}`);
+        res.redirect(`${process.env.FRONTEND_URL}/?token=${token}`);
     })(req, res, next);
 };
 
