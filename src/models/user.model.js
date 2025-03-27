@@ -9,5 +9,6 @@ const UserSchema = new mongoose.Schema({
     refreshToken: { type: String },
 }, { timestamps: true });
 
-export const User = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
+export default User

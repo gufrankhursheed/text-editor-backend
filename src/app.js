@@ -23,7 +23,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 import authRoutes from "./routes/auth.routes.js"
+import googleDriveRoutes from "./routes/googleDrive.routes.js"
 
 app.use("/auth", authRoutes)
+app.use("/drive", googleDriveRoutes);
 
 export default app
